@@ -10,10 +10,6 @@
 		scope:target_country = {
 			NOT = { is_country_type = decentralized }
 			NOT = { is_subject_of = root }
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
 		}
 		custom_tooltip = {
 			text = DIPLO_ACTION_RELATIONS_CORDIAL_OR_GREATER_NOT
@@ -40,10 +36,6 @@ dp_regime_change = {
 		NOT = { is_subject_of = scope:target_country }	
 		scope:target_country = {
 			NOT = { is_country_type = decentralized }
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
 		}
 		custom_tooltip = {
 			text = DIPLO_ACTION_RELATIONS_CORDIAL_OR_GREATER_NOT
@@ -69,10 +61,6 @@ dp_ban_slavery = {
 		NOT = { is_subject_of = scope:target_country }	
 		scope:target_country = {
 			NOT = { is_country_type = decentralized }
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
 		}
 		custom_tooltip = {
 			text = DIPLO_ACTION_RELATIONS_CORDIAL_OR_GREATER_NOT
@@ -99,10 +87,6 @@ dp_conquer_state = {
 		scope:target_country = {
 			NOT = { is_country_type = decentralized }
 			NOT = { is_subject_of = root }
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
 		}	
 		custom_tooltip = {
 			text = DIPLO_ACTION_RELATIONS_CORDIAL_OR_GREATER_NOT
@@ -131,10 +115,6 @@ dp_return_state = {
 		scope:target_country = {
 			NOT = { is_country_type = decentralized }
 			NOT = { is_subject_of = root }
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
 		}
 		custom_tooltip = {
 			text = DIPLO_ACTION_RELATIONS_CORDIAL_OR_GREATER_NOT
@@ -162,10 +142,6 @@ dp_liberate_subject = {
 			NOT = { is_country_type = decentralized }
 			is_subject = yes
 			NOT = { is_subject_of = root }
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
 		}
 		custom_tooltip = {
 			text = DIPLO_ACTION_OVERLORD_RELATIONS_CORDIAL_OR_GREATER_NOT
@@ -211,10 +187,6 @@ dp_take_treaty_port = {
 		scope:target_country = {
 			NOT = { is_country_type = decentralized }
 			NOT = { is_subject_of = root }
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
 		}
 		custom_tooltip = {
 			text = DIPLO_ACTION_RELATIONS_CORDIAL_OR_GREATER_NOT
@@ -237,12 +209,6 @@ dp_make_dominion = {
 	
 	possible = {
 		aggressive_diplomatic_plays_permitted = yes	
-		scope:target_country = {
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
-		}
 		custom_tooltip = {
 			text = DIPLO_ACTION_RELATIONS_CORDIAL_OR_GREATER_NOT
 			scope:target_country.relations:root < relations_threshold:cordial
@@ -263,12 +229,6 @@ dp_make_vassal = {
 	
 	possible = {
 		aggressive_diplomatic_plays_permitted = yes	
-		scope:target_country = {
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
-		}
 		custom_tooltip = {
 			text = DIPLO_ACTION_RELATIONS_CORDIAL_OR_GREATER_NOT
 			scope:target_country.relations:root < relations_threshold:cordial
@@ -289,12 +249,6 @@ dp_make_puppet = {
 	
 	possible = {	
 		aggressive_diplomatic_plays_permitted = yes		
-		scope:target_country = {
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
-		}
 		custom_tooltip = {
 			text = DIPLO_ACTION_RELATIONS_CORDIAL_OR_GREATER_NOT
 			scope:target_country.relations:root < relations_threshold:cordial
@@ -322,10 +276,6 @@ dp_transfer_subject = {
 			is_subject = yes
 			NOT = { is_subject_of = root }
 			NOT = { is_subject_type = subject_type_personal_union }
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
 		}
 		custom_tooltip = {
 			text = DIPLO_ACTION_OVERLORD_RELATIONS_CORDIAL_OR_GREATER_NOT
@@ -355,10 +305,6 @@ dp_annex_subject = {
 				has_diplomatic_pact = { who = root type = dominion }
 				has_diplomatic_pact = { who = root type = puppet }
 				has_diplomatic_pact = { who = root type = vassal }
-			}
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
 			}
 		}			
 	}
@@ -391,10 +337,6 @@ dp_force_recognition = {
 				is_country_type = colonial
 			}		
 			NOT = { is_subject_of = root }
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
 		}	
 		custom_tooltip = {
 			text = DIPLO_ACTION_RELATIONS_CORDIAL_OR_GREATER_NOT
@@ -644,6 +586,7 @@ dp_unify_germany = {
 	
 	requires_interest_marker = no
 	blocked_by_diplomatic_status = no
+	add_infamy_for_starting_initiator_wargoals = no
 	
 	texture = "gfx/interface/icons/war_goals/unify_germany.dds"
 	
@@ -669,6 +612,7 @@ dp_unify_italy = {
 	
 	requires_interest_marker = no
 	blocked_by_diplomatic_status = no
+	add_infamy_for_starting_initiator_wargoals = no
 	
 	texture = "gfx/interface/icons/war_goals/unify_italy.dds"
 	
@@ -694,6 +638,7 @@ dp_unify_scandinavia = {
 	
 	requires_interest_marker = no
 	blocked_by_diplomatic_status = no
+	add_infamy_for_starting_initiator_wargoals = no
 	
 	texture = "gfx/interface/icons/war_goals/unification.dds"
 	
@@ -966,12 +911,6 @@ dp_humiliation = {
 	
 	possible = {	
 		aggressive_diplomatic_plays_permitted = yes		
-		scope:target_country = {
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
-		}
 	}
 	
 	on_weekly_pulse = {}
