@@ -10,10 +10,6 @@
 		scope:target_country = {
 			NOT = { is_country_type = decentralized }
 			NOT = { is_subject_of = root }
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
 		}
 	}
 
@@ -36,10 +32,6 @@ dp_regime_change = {
 		NOT = { is_subject_of = scope:target_country }	
 		scope:target_country = {
 			NOT = { is_country_type = decentralized }
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
 		}	
 	}
 
@@ -61,10 +53,6 @@ dp_ban_slavery = {
 		NOT = { is_subject_of = scope:target_country }	
 		scope:target_country = {
 			NOT = { is_country_type = decentralized }
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
 		}	
 	}
 
@@ -87,10 +75,6 @@ dp_conquer_state = {
 		scope:target_country = {
 			NOT = { is_country_type = decentralized }
 			NOT = { is_subject_of = root }
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
 		}	
 		diplomatic_play_has_no_relations_blockers = yes		
 	}
@@ -116,10 +100,6 @@ dp_return_state = {
 		scope:target_country = {
 			NOT = { is_country_type = decentralized }
 			NOT = { is_subject_of = root }
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
 		}
 		diplomatic_play_has_no_relations_blockers = yes
 	}
@@ -144,10 +124,6 @@ dp_liberate_subject = {
 			NOT = { is_country_type = decentralized }
 			is_subject = yes
 			NOT = { is_subject_of = root }
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
 		}
 		diplomatic_play_has_no_relations_blocker_with_overlord = yes
 	}
@@ -169,12 +145,6 @@ dp_liberate_country = {
 		aggressive_diplomatic_plays_permitted = yes
 		NOT = { is_subject_of = scope:target_country }	
 		diplomatic_play_has_no_relations_blockers = yes
-		scope:target_country = {
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
-		}
 	}
 
 	on_weekly_pulse = {}
@@ -215,10 +185,6 @@ dp_take_treaty_port = {
 		scope:target_country = {
 			NOT = { is_country_type = decentralized }
 			NOT = { is_subject_of = root }
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
 		}
 		diplomatic_play_has_no_relations_blockers = yes	
 	}
@@ -257,13 +223,7 @@ dp_reduce_autonomy = {
 	
 	possible = {
 		aggressive_diplomatic_plays_permitted = yes
-		scope:target_country = {
-			is_subject = yes
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
-		}
+		scope:target_country = { is_subject = yes }
 	}
 	
 	on_weekly_pulse = {}
@@ -280,12 +240,6 @@ dp_make_tributary = {
 	
 	possible = {
 		aggressive_diplomatic_plays_permitted = yes	
-		scope:target_country = {
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
-		}
 	}
 	
 	on_weekly_pulse = {}
@@ -302,12 +256,6 @@ dp_make_protectorate = {
 	
 	possible = {	
 		aggressive_diplomatic_plays_permitted = yes				
-		scope:target_country = {
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
-		}
 	}
 	
 	on_weekly_pulse = {}
@@ -330,10 +278,6 @@ dp_transfer_subject = {
 			NOT = { is_country_type = decentralized }
 			is_subject = yes
 			NOT = { is_subject_of = root }
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
 		}
 		diplomatic_play_has_no_relations_blocker_with_overlord = yes			
 	}
@@ -360,12 +304,8 @@ dp_annex_subject = {
 				has_diplomatic_pact = { who = root type = puppet }
 				has_diplomatic_pact = { who = root type = vassal }
 			}
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
 		}
-		NOT = {
+		NAND = {
 			has_journal_entry = je_peru_bolivia
 			scope:target_country = {
 				OR = {
@@ -403,10 +343,6 @@ dp_force_recognition = {
 				is_country_type = recognized
 				is_country_type = colonial
 			}		
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
 		}	
 	}
 	
@@ -1024,12 +960,6 @@ dp_humiliation = {
 	
 	possible = {	
 		aggressive_diplomatic_plays_permitted = yes		
-		scope:target_country = {
-			OR = {
-				is_ai = yes
-				infamy >= infamy_threshold:pariah
-			}
-		}
 	}
 	
 	on_weekly_pulse = {}
