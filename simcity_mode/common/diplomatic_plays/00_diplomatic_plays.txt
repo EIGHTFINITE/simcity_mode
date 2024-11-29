@@ -108,6 +108,11 @@ dp_ban_slavery = {
 				infamy >= infamy_threshold:pariah
 			}
 		}
+		scope:target_country = {
+			any_scope_state = {
+				is_slave_state = yes
+			}
+		}
 	}
 
 	ai_acceptance_max = 90
