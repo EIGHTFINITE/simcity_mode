@@ -108,9 +108,12 @@ dp_ban_slavery = {
 				infamy >= infamy_threshold:pariah
 			}
 		}
-		scope:target_country = {
-			any_scope_state = {
-				is_slave_state = yes
+		custom_tooltip = {
+			text = WARGOAL_COUNTRY_HAS_SLAVERY
+			scope:target_country = {
+				any_scope_state = {
+					is_slave_state = yes
+				}
 			}
 		}
 	}
