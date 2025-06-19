@@ -86,6 +86,14 @@ dp_ban_slavery = {
 			NOT = { is_country_type = decentralized }
 			NOT = { is_subject_of = root }
 		}
+		custom_tooltip = {
+			text = WARGOAL_COUNTRY_HAS_SLAVERY
+			scope:target_country = {
+				any_scope_state = {
+					is_slave_state = yes
+				}
+			}
+		}
 	}
 
 	ai_acceptance_max = 90
