@@ -6,6 +6,8 @@ dp_default_treaty_article = {
 
 	texture = "gfx/interface/icons/war_goals/enforce_treaty_article.dds"
 
+	add_infamy_for_starting_target_wargoals = yes
+
 	selectable_in_lens = {
 		always = no
 	}
@@ -37,15 +39,6 @@ dp_open_market = {
 			NOT = { is_country_type = decentralized }
 			NOT = { is_subject_of = root }
 		}
-		scope:target_country = {
-			OR = {
-				is_player = no
-				custom_tooltip = {
-					text = DIPLO_PLAY_OUTRAGED_TRIGGER
-					infamy >= infamy_threshold:pariah
-				}
-			}
-		}
 	}
 
 	ai_acceptance_max = 100
@@ -71,15 +64,6 @@ dp_regime_change = {
 			NOT = { is_country_type = decentralized }
 			NOT = { is_subject_of = root }
 		}
-		scope:target_country = {
-			OR = {
-				is_player = no
-				custom_tooltip = {
-					text = DIPLO_PLAY_OUTRAGED_TRIGGER
-					infamy >= infamy_threshold:pariah
-				}
-			}
-		}
 	}
 
 	ai_acceptance_max = 90
@@ -96,6 +80,8 @@ dp_ban_slavery = {
 
 	texture = "gfx/interface/icons/war_goals/ban_slavery.dds"
 
+	add_infamy_for_starting_target_wargoals = yes
+
 	possible = {
 		NOT = { is_country_type = decentralized }
 		aggressive_diplomatic_plays_permitted = yes
@@ -103,23 +89,6 @@ dp_ban_slavery = {
 		scope:target_country = {
 			NOT = { is_country_type = decentralized }
 			NOT = { is_subject_of = root }
-		}
-		scope:target_country = {
-			OR = {
-				is_player = no
-				custom_tooltip = {
-					text = DIPLO_PLAY_OUTRAGED_TRIGGER
-					infamy >= infamy_threshold:pariah
-				}
-			}
-		}
-		custom_tooltip = {
-			text = WARGOAL_COUNTRY_HAS_SLAVERY
-			scope:target_country = {
-				any_scope_state = {
-					is_slave_state = yes
-				}
-			}
 		}
 	}
 
@@ -146,15 +115,6 @@ dp_conquer_state = {
 			NOT = { is_subject_of = root }
 		}
 		diplomatic_play_has_no_relations_blockers = yes
-		scope:target_country = {
-			OR = {
-				is_player = no
-				custom_tooltip = {
-					text = DIPLO_PLAY_OUTRAGED_TRIGGER
-					infamy >= infamy_threshold:pariah
-				}
-			}
-		}
 	}
 
 	ai_acceptance_max = 75
@@ -181,15 +141,6 @@ dp_return_state = {
 			NOT = { is_country_type = decentralized }
 		}
 		diplomatic_play_has_no_relations_blockers = yes
-		scope:target_country = {
-			OR = {
-				is_player = no
-				custom_tooltip = {
-					text = DIPLO_PLAY_OUTRAGED_TRIGGER
-					infamy >= infamy_threshold:pariah
-				}
-			}
-		}
 	}
 
 	ai_acceptance_max = 90
@@ -216,15 +167,6 @@ dp_liberate_subject = {
 			NOT = { is_subject_of = root }
 		}
 		diplomatic_play_has_no_relations_blocker_with_overlord = yes
-		scope:target_country = {
-			OR = {
-				is_player = no
-				custom_tooltip = {
-					text = DIPLO_PLAY_OUTRAGED_TRIGGER
-					infamy >= infamy_threshold:pariah
-				}
-			}
-		}
 	}
 
 	ai_acceptance_max = 90
@@ -246,15 +188,6 @@ dp_liberate_country = {
 		aggressive_diplomatic_plays_permitted = yes
 		NOT = { is_subject_of = scope:target_country }
 		diplomatic_play_has_no_relations_blockers = yes
-		scope:target_country = {
-			OR = {
-				is_player = no
-				custom_tooltip = {
-					text = DIPLO_PLAY_OUTRAGED_TRIGGER
-					infamy >= infamy_threshold:pariah
-				}
-			}
-		}
 	}
 
 	ai_acceptance_max = 90
@@ -307,15 +240,6 @@ dp_leave_power_bloc = {
 	possible = {
 		NOT = { is_country_type = decentralized }
 		diplomatic_play_has_no_relations_blockers = yes
-		scope:target_country = {
-			OR = {
-				is_player = no
-				custom_tooltip = {
-					text = DIPLO_PLAY_OUTRAGED_TRIGGER
-					infamy >= infamy_threshold:pariah
-				}
-			}
-		}
 	}
 
 	ai_acceptance_max = 100
@@ -373,13 +297,10 @@ dp_reduce_autonomy = {
 			}
 			has_technology_researched = civilizing_mission
 		}
-		scope:target_country = {
-			OR = {
-				is_player = no
-				custom_tooltip = {
-					text = DIPLO_PLAY_OUTRAGED_TRIGGER
-					infamy >= infamy_threshold:pariah
-				}
+		NAND = {
+			is_involved_in_journal_entry = je_ryukyu_rivalry
+			scope:target_country = {
+				c:RYU ?= this
 			}
 		}
 	}
@@ -397,6 +318,8 @@ dp_take_treaty_port = {
 
 	texture = "gfx/interface/icons/war_goals/take_treaty_port.dds"
 
+	add_infamy_for_starting_target_wargoals = yes
+
 	possible = {
 		NOT = { is_country_type = decentralized }
 		aggressive_diplomatic_plays_permitted = yes
@@ -406,15 +329,6 @@ dp_take_treaty_port = {
 			NOT = { is_subject_of = root }
 		}
 		diplomatic_play_has_no_relations_blockers = yes
-		scope:target_country = {
-			OR = {
-				is_player = no
-				custom_tooltip = {
-					text = DIPLO_PLAY_OUTRAGED_TRIGGER
-					infamy >= infamy_threshold:pariah
-				}
-			}
-		}
 	}
 
 	ai_acceptance_max = 100
@@ -433,15 +347,7 @@ dp_make_tributary = {
 
 	possible = {
 		aggressive_diplomatic_plays_permitted = yes
-		scope:target_country = {
-			OR = {
-				is_player = no
-				custom_tooltip = {
-					text = DIPLO_PLAY_OUTRAGED_TRIGGER
-					infamy >= infamy_threshold:pariah
-				}
-			}
-		}
+		NOT = { scope:target_country = { has_modifier = modifier_ryukyu_rivalry_secured_neutrality } }
 	}
 
 	ai_acceptance_max = 90
@@ -460,15 +366,7 @@ dp_make_dominion = {
 
 	possible = {
 		aggressive_diplomatic_plays_permitted = yes
-		scope:target_country = {
-			OR = {
-				is_player = no
-				custom_tooltip = {
-					text = DIPLO_PLAY_OUTRAGED_TRIGGER
-					infamy >= infamy_threshold:pariah
-				}
-			}
-		}
+		NOT = { scope:target_country = { has_modifier = modifier_ryukyu_rivalry_secured_neutrality } }
 	}
 
 	ai_acceptance_max = 90
@@ -487,15 +385,7 @@ dp_make_protectorate = {
 
 	possible = {
 		aggressive_diplomatic_plays_permitted = yes
-		scope:target_country = {
-			OR = {
-				is_player = no
-				custom_tooltip = {
-					text = DIPLO_PLAY_OUTRAGED_TRIGGER
-					infamy >= infamy_threshold:pariah
-				}
-			}
-		}
+		NOT = { scope:target_country = { has_modifier = modifier_ryukyu_rivalry_secured_neutrality } }
 	}
 
 	ai_acceptance_max = 90
@@ -506,25 +396,6 @@ dp_make_protectorate = {
 
 	on_war_end = {}
 }
-
-# TODO PRCAL-36324 - add this diplo play back in when we get rid of Colonial country type
-#dp_make_dominion = {
-#	war_goal = make_dominion
-#
-#	texture = "gfx/interface/icons/war_goals/make_dominion.dds"
-#
-#	possible = {
-#		aggressive_diplomatic_plays_permitted = yes
-#	}
-#
-#	ai_acceptance_max = 90
-#
-#	on_weekly_pulse = {}
-#
-#	on_war_begins = {}
-#
-#	on_war_end = {}
-#}
 
 dp_transfer_subject = {
 	war_goal = transfer_subject
@@ -541,15 +412,6 @@ dp_transfer_subject = {
 			NOT = { is_subject_of = root }
 		}
 		diplomatic_play_has_no_relations_blocker_with_overlord = yes
-		scope:target_country = {
-			OR = {
-				is_player = no
-				custom_tooltip = {
-					text = DIPLO_PLAY_OUTRAGED_TRIGGER
-					infamy >= infamy_threshold:pariah
-				}
-			}
-		}
 	}
 
 	ai_acceptance_max = 90
@@ -595,10 +457,11 @@ dp_annex_subject = {
 				has_diplomatic_pact = { who = root type = colony }
 				has_diplomatic_pact = { who = root type = puppet }
 				has_diplomatic_pact = { who = root type = vassal }
+				has_diplomatic_pact = { who = root type = crown_land }
 			}
 		}
 		NAND = {
-			has_journal_entry = je_peru_bolivia
+			is_involved_in_journal_entry = je_peru_bolivia
 			scope:target_country = {
 				OR = {
 					country_has_primary_culture = cu:quechua
@@ -606,14 +469,15 @@ dp_annex_subject = {
 				}
 			}
 		}
-		scope:target_country = {
-			OR = {
-				is_player = no
-				custom_tooltip = {
-					text = DIPLO_PLAY_OUTRAGED_TRIGGER
-					infamy >= infamy_threshold:pariah
-				}
+		NAND = {
+			is_involved_in_journal_entry = je_ryukyu_rivalry
+			scope:target_country = {
+				c:RYU ?= this
 			}
+		}
+		NAND = {
+			c:JAP ?= this
+			has_law_or_variant = law_type:law_serfdom # Proxy for feudalism
 		}
 	}
 
@@ -811,7 +675,7 @@ dp_taiping_rebellion = {
 	possible = {
 		exists = c:TPG
 		scope:target_country = {
-			this = c:TPG
+			c:TPG ?= THIS
 		}
 	}
 
@@ -855,15 +719,6 @@ dp_join_power_bloc = {
 				target = scope:target_country
 			}
 		}
-		scope:target_country = {
-			OR = {
-				is_player = no
-				custom_tooltip = {
-					text = DIPLO_PLAY_OUTRAGED_TRIGGER
-					infamy >= infamy_threshold:pariah
-				}
-			}
-		}
 	}
 
 	ai_acceptance_max = 100
@@ -885,15 +740,6 @@ dp_force_nationalization = {
 		NOT = { is_country_type = decentralized }
 		aggressive_diplomatic_plays_permitted = yes
 		diplomatic_play_has_no_relations_blockers = yes
-		scope:target_country = {
-			OR = {
-				is_player = no
-				custom_tooltip = {
-					text = DIPLO_PLAY_OUTRAGED_TRIGGER
-					infamy >= infamy_threshold:pariah
-				}
-			}
-		}
 	}
 
 	selectable_in_lens = {
@@ -913,6 +759,7 @@ dp_give_foreign_investment_rights = {
 	war_goal = foreign_investment_rights
 
 	requires_interest_marker = yes
+	add_infamy_for_starting_target_wargoals = yes
 
 	texture = "gfx/interface/icons/war_goals/foreign_investment_rights.dds"
 
@@ -920,15 +767,6 @@ dp_give_foreign_investment_rights = {
 		NOT = { is_country_type = decentralized }
 		aggressive_diplomatic_plays_permitted = yes
 		diplomatic_play_has_no_relations_blockers = yes
-		scope:target_country = {
-			OR = {
-				is_player = no
-				custom_tooltip = {
-					text = DIPLO_PLAY_OUTRAGED_TRIGGER
-					infamy >= infamy_threshold:pariah
-				}
-			}
-		}
 	}
 
 	selectable_in_lens = {
@@ -987,15 +825,6 @@ dp_annex_war = {
 			country_rank <= rank_value:insignificant_power
 		}
 		diplomatic_play_has_no_relations_blockers = yes
-		scope:target_country = {
-			OR = {
-				is_player = no
-				custom_tooltip = {
-					text = DIPLO_PLAY_OUTRAGED_TRIGGER
-					infamy >= infamy_threshold:pariah
-				}
-			}
-		}
 	}
 
 	ai_acceptance_max = 75
@@ -1111,7 +940,7 @@ dp_unify_ethiopia = {
 				text = ETH_tt
 				can_form_nation = ETH
 			}
-			aggressive_diplomatic_plays_permitted = yes		
+			aggressive_diplomatic_plays_permitted = yes
 		}
 	}
 
@@ -1228,7 +1057,7 @@ dp_unify_india = {
 					can_form_nation = BHT
 				}
 				AND = {
-					country_is_in_india = yes
+					is_in_geographic_region = geographic_region_india
 					custom_tooltip = {
 						text = indian_primary_culture_tt
 						has_indian_primary_culture = yes
@@ -1397,15 +1226,6 @@ dp_humiliation = {
 
 	possible = {
 		aggressive_diplomatic_plays_permitted = yes
-		scope:target_country = {
-			OR = {
-				is_player = no
-				custom_tooltip = {
-					text = DIPLO_PLAY_OUTRAGED_TRIGGER
-					infamy >= infamy_threshold:pariah
-				}
-			}
-		}
 	}
 
 	on_weekly_pulse = {}
@@ -1435,5 +1255,189 @@ dp_sepoy_mutiny = {
 
 	on_war_begins = {}
 
+	on_war_end = {
+
+	}
+}
+
+dp_balkan_war = {
+	war_goal = humiliation
+
+	requires_interest_marker = no
+	allow_negotiated_peace = no
+	add_infamy_for_starting_initiator_wargoals = no
+	initiator_can_add_war_goals = no
+
+	texture = "gfx/interface/icons/war_goals/return_state.dds"
+
+	selectable_in_lens = {
+		always = no
+	}
+
+	possible = {
+		always = no
+	}
+
+	ai_acceptance_max = 75
+
+	on_weekly_pulse = {}
+
+	on_war_begins = {}
+
 	on_war_end = {}
+}
+
+dp_enforce_trialist_manifesto = {
+	war_goal = humiliation
+
+	requires_interest_marker = no
+	allow_negotiated_peace = yes
+	add_infamy_for_starting_initiator_wargoals = no
+	initiator_can_add_war_goals = yes
+
+	texture = "gfx/interface/icons/war_goals/return_state.dds"
+
+	selectable_in_lens = {
+		always = no
+	}
+
+	possible = {
+		always = no
+	}
+
+	ai_acceptance_max = 75
+
+	on_weekly_pulse = {}
+
+	on_war_begins = {}
+
+	on_war_end = {}
+}
+
+dp_unify_yugoslavia = {
+	war_goal = unification
+
+	requires_interest_marker = no
+	blocked_by_diplomatic_status = no
+	add_infamy_for_starting_initiator_wargoals = no
+
+	texture = "gfx/interface/icons/war_goals/unification.dds"
+
+	selectable_in_lens = {
+		always = no
+	}
+
+	possible = {
+		NOT = { exists = c:YUG }
+		NOT = { is_country_type = decentralized }
+		is_subject = no
+		has_technology_researched = pan-nationalism
+	}
+
+	on_weekly_pulse = {}
+
+	on_war_begins = {}
+
+	on_war_end = {}
+}
+
+dp_leadership_yugoslavia = {
+	war_goal = unification_leadership
+
+	requires_interest_marker = no
+	mirror_war_goal = yes
+
+	texture = "gfx/interface/icons/war_goals/unification.dds"
+
+	selectable_in_lens = {
+		always = no
+	}
+
+	possible = {
+		has_technology_researched = nationalism
+	}
+
+	on_weekly_pulse = {}
+
+	on_war_begins = {}
+
+	on_war_end = {}
+}
+
+dp_hungarian_revolution = {
+	war_goal = annex_country
+
+	allow_negotiated_peace = no
+	add_infamy_for_starting_initiator_wargoals = no
+	initiator_can_add_war_goals = no
+
+	texture = "gfx/interface/icons/war_goals/annex_country.dds"
+
+	selectable_in_lens = {
+		always = no
+	}
+
+	possible = {}
+
+	ai_acceptance_max = 75
+
+	on_weekly_pulse = {}
+
+	on_war_begins = {}
+
+	on_war_end = {
+
+	}
+}
+
+dp_restore_union = {
+	war_goal = restore_union
+
+	texture = "gfx/interface/icons/war_goals/enforce_treaty_article.dds"
+
+	selectable_in_lens = {
+		has_law = law_type:law_monarchy
+		has_variable = por_seeking_restore_union_var
+	}
+
+	possible = {
+		aggressive_diplomatic_plays_permitted = yes
+	}
+
+	ai_acceptance_max = 90
+
+	on_weekly_pulse = {}
+
+	on_war_begins = {
+		if = {
+			limit = {
+				any_scope_play_involved = {
+					has_variable = por_seeking_restore_union_var
+				}
+			}
+			random_scope_play_involved = { # This is typically a temp variable. Starting this war makes it permanent for the duration of the war.
+				limit = {
+					has_variable = por_seeking_restore_union_var
+				}
+				remove_variable = por_seeking_restore_union_var
+				set_variable = por_seeking_restore_union_var
+			}
+		}
+	}
+
+	on_war_end = {
+		if = {
+			limit = {
+				any_scope_play_involved = {
+					has_variable = por_seeking_restore_union_var
+				}
+			}
+			random_scope_play_involved = { # Removes variable upon war conclusion, regardless of outcome
+				limit = {
+					has_variable = por_seeking_restore_union_var
+				}
+				remove_variable = por_seeking_restore_union_var
+			}
+		}
+	}
 }
