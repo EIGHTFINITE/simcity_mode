@@ -39,6 +39,15 @@ dp_open_market = {
 			NOT = { is_country_type = decentralized }
 			NOT = { is_subject_of = root }
 		}
+		scope:target_country = {
+			OR = {
+				is_player = no
+				custom_tooltip = {
+					text = DIPLO_PLAY_OUTRAGED_TRIGGER
+					infamy >= infamy_threshold:pariah
+				}
+			}
+		}
 	}
 
 	ai_acceptance_max = 100
@@ -63,6 +72,15 @@ dp_regime_change = {
 		scope:target_country = {
 			NOT = { is_country_type = decentralized }
 			NOT = { is_subject_of = root }
+		}
+		scope:target_country = {
+			OR = {
+				is_player = no
+				custom_tooltip = {
+					text = DIPLO_PLAY_OUTRAGED_TRIGGER
+					infamy >= infamy_threshold:pariah
+				}
+			}
 		}
 	}
 
@@ -90,6 +108,23 @@ dp_ban_slavery = {
 			NOT = { is_country_type = decentralized }
 			NOT = { is_subject_of = root }
 		}
+		custom_tooltip = {
+			text = WARGOAL_COUNTRY_HAS_SLAVERY
+			scope:target_country = {
+				any_scope_state = {
+					is_slave_state = yes
+				}
+			}
+		}
+		scope:target_country = {
+			OR = {
+				is_player = no
+				custom_tooltip = {
+					text = DIPLO_PLAY_OUTRAGED_TRIGGER
+					infamy >= infamy_threshold:pariah
+				}
+			}
+		}
 	}
 
 	ai_acceptance_max = 90
@@ -115,6 +150,15 @@ dp_conquer_state = {
 			NOT = { is_subject_of = root }
 		}
 		diplomatic_play_has_no_relations_blockers = yes
+		scope:target_country = {
+			OR = {
+				is_player = no
+				custom_tooltip = {
+					text = DIPLO_PLAY_OUTRAGED_TRIGGER
+					infamy >= infamy_threshold:pariah
+				}
+			}
+		}
 	}
 
 	ai_acceptance_max = 75
@@ -141,6 +185,15 @@ dp_return_state = {
 			NOT = { is_country_type = decentralized }
 		}
 		diplomatic_play_has_no_relations_blockers = yes
+		scope:target_country = {
+			OR = {
+				is_player = no
+				custom_tooltip = {
+					text = DIPLO_PLAY_OUTRAGED_TRIGGER
+					infamy >= infamy_threshold:pariah
+				}
+			}
+		}
 	}
 
 	ai_acceptance_max = 90
@@ -167,6 +220,15 @@ dp_liberate_subject = {
 			NOT = { is_subject_of = root }
 		}
 		diplomatic_play_has_no_relations_blocker_with_overlord = yes
+		scope:target_country = {
+			OR = {
+				is_player = no
+				custom_tooltip = {
+					text = DIPLO_PLAY_OUTRAGED_TRIGGER
+					infamy >= infamy_threshold:pariah
+				}
+			}
+		}
 	}
 
 	ai_acceptance_max = 90
@@ -188,6 +250,15 @@ dp_liberate_country = {
 		aggressive_diplomatic_plays_permitted = yes
 		NOT = { is_subject_of = scope:target_country }
 		diplomatic_play_has_no_relations_blockers = yes
+		scope:target_country = {
+			OR = {
+				is_player = no
+				custom_tooltip = {
+					text = DIPLO_PLAY_OUTRAGED_TRIGGER
+					infamy >= infamy_threshold:pariah
+				}
+			}
+		}
 	}
 
 	ai_acceptance_max = 90
@@ -240,6 +311,15 @@ dp_leave_power_bloc = {
 	possible = {
 		NOT = { is_country_type = decentralized }
 		diplomatic_play_has_no_relations_blockers = yes
+		scope:target_country = {
+			OR = {
+				is_player = no
+				custom_tooltip = {
+					text = DIPLO_PLAY_OUTRAGED_TRIGGER
+					infamy >= infamy_threshold:pariah
+				}
+			}
+		}
 	}
 
 	ai_acceptance_max = 100
@@ -303,6 +383,15 @@ dp_reduce_autonomy = {
 				c:RYU ?= this
 			}
 		}
+		scope:target_country = {
+			OR = {
+				is_player = no
+				custom_tooltip = {
+					text = DIPLO_PLAY_OUTRAGED_TRIGGER
+					infamy >= infamy_threshold:pariah
+				}
+			}
+		}
 	}
 
 	on_weekly_pulse = {}
@@ -329,6 +418,15 @@ dp_take_treaty_port = {
 			NOT = { is_subject_of = root }
 		}
 		diplomatic_play_has_no_relations_blockers = yes
+		scope:target_country = {
+			OR = {
+				is_player = no
+				custom_tooltip = {
+					text = DIPLO_PLAY_OUTRAGED_TRIGGER
+					infamy >= infamy_threshold:pariah
+				}
+			}
+		}
 	}
 
 	ai_acceptance_max = 100
@@ -348,6 +446,15 @@ dp_make_tributary = {
 	possible = {
 		aggressive_diplomatic_plays_permitted = yes
 		NOT = { scope:target_country = { has_modifier = modifier_ryukyu_rivalry_secured_neutrality } }
+		scope:target_country = {
+			OR = {
+				is_player = no
+				custom_tooltip = {
+					text = DIPLO_PLAY_OUTRAGED_TRIGGER
+					infamy >= infamy_threshold:pariah
+				}
+			}
+		}
 	}
 
 	ai_acceptance_max = 90
@@ -367,6 +474,15 @@ dp_make_dominion = {
 	possible = {
 		aggressive_diplomatic_plays_permitted = yes
 		NOT = { scope:target_country = { has_modifier = modifier_ryukyu_rivalry_secured_neutrality } }
+		scope:target_country = {
+			OR = {
+				is_player = no
+				custom_tooltip = {
+					text = DIPLO_PLAY_OUTRAGED_TRIGGER
+					infamy >= infamy_threshold:pariah
+				}
+			}
+		}
 	}
 
 	ai_acceptance_max = 90
@@ -386,6 +502,15 @@ dp_make_protectorate = {
 	possible = {
 		aggressive_diplomatic_plays_permitted = yes
 		NOT = { scope:target_country = { has_modifier = modifier_ryukyu_rivalry_secured_neutrality } }
+		scope:target_country = {
+			OR = {
+				is_player = no
+				custom_tooltip = {
+					text = DIPLO_PLAY_OUTRAGED_TRIGGER
+					infamy >= infamy_threshold:pariah
+				}
+			}
+		}
 	}
 
 	ai_acceptance_max = 90
@@ -412,6 +537,15 @@ dp_transfer_subject = {
 			NOT = { is_subject_of = root }
 		}
 		diplomatic_play_has_no_relations_blocker_with_overlord = yes
+		scope:target_country = {
+			OR = {
+				is_player = no
+				custom_tooltip = {
+					text = DIPLO_PLAY_OUTRAGED_TRIGGER
+					infamy >= infamy_threshold:pariah
+				}
+			}
+		}
 	}
 
 	ai_acceptance_max = 90
@@ -478,6 +612,15 @@ dp_annex_subject = {
 		NAND = {
 			c:JAP ?= this
 			has_law_or_variant = law_type:law_serfdom # Proxy for feudalism
+		}
+		scope:target_country = {
+			OR = {
+				is_player = no
+				custom_tooltip = {
+					text = DIPLO_PLAY_OUTRAGED_TRIGGER
+					infamy >= infamy_threshold:pariah
+				}
+			}
 		}
 	}
 
@@ -719,6 +862,15 @@ dp_join_power_bloc = {
 				target = scope:target_country
 			}
 		}
+		scope:target_country = {
+			OR = {
+				is_player = no
+				custom_tooltip = {
+					text = DIPLO_PLAY_OUTRAGED_TRIGGER
+					infamy >= infamy_threshold:pariah
+				}
+			}
+		}
 	}
 
 	ai_acceptance_max = 100
@@ -740,6 +892,15 @@ dp_force_nationalization = {
 		NOT = { is_country_type = decentralized }
 		aggressive_diplomatic_plays_permitted = yes
 		diplomatic_play_has_no_relations_blockers = yes
+		scope:target_country = {
+			OR = {
+				is_player = no
+				custom_tooltip = {
+					text = DIPLO_PLAY_OUTRAGED_TRIGGER
+					infamy >= infamy_threshold:pariah
+				}
+			}
+		}
 	}
 
 	selectable_in_lens = {
@@ -767,6 +928,15 @@ dp_give_foreign_investment_rights = {
 		NOT = { is_country_type = decentralized }
 		aggressive_diplomatic_plays_permitted = yes
 		diplomatic_play_has_no_relations_blockers = yes
+		scope:target_country = {
+			OR = {
+				is_player = no
+				custom_tooltip = {
+					text = DIPLO_PLAY_OUTRAGED_TRIGGER
+					infamy >= infamy_threshold:pariah
+				}
+			}
+		}
 	}
 
 	selectable_in_lens = {
@@ -825,6 +995,15 @@ dp_annex_war = {
 			country_rank <= rank_value:insignificant_power
 		}
 		diplomatic_play_has_no_relations_blockers = yes
+		scope:target_country = {
+			OR = {
+				is_player = no
+				custom_tooltip = {
+					text = DIPLO_PLAY_OUTRAGED_TRIGGER
+					infamy >= infamy_threshold:pariah
+				}
+			}
+		}
 	}
 
 	ai_acceptance_max = 75
@@ -1226,6 +1405,15 @@ dp_humiliation = {
 
 	possible = {
 		aggressive_diplomatic_plays_permitted = yes
+		scope:target_country = {
+			OR = {
+				is_player = no
+				custom_tooltip = {
+					text = DIPLO_PLAY_OUTRAGED_TRIGGER
+					infamy >= infamy_threshold:pariah
+				}
+			}
+		}
 	}
 
 	on_weekly_pulse = {}
@@ -1402,6 +1590,15 @@ dp_restore_union = {
 
 	possible = {
 		aggressive_diplomatic_plays_permitted = yes
+		scope:target_country = {
+			OR = {
+				is_player = no
+				custom_tooltip = {
+					text = DIPLO_PLAY_OUTRAGED_TRIGGER
+					infamy >= infamy_threshold:pariah
+				}
+			}
+		}
 	}
 
 	ai_acceptance_max = 90
